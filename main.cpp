@@ -11,10 +11,11 @@ Program mainly for Linux/GNU, and probably will work on any UNIX-like system
 #include <cctype>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include "mkproj.hpp"
+#include "include/mkproj.hpp"
+#include "include/prepare.hpp"
 
 std::string name, temp;
-bool welcome_script = false;
+bool welcome_script = true;
 
 
 std::string lowercase(std::string str)
@@ -27,12 +28,15 @@ std::string lowercase(std::string str)
 
 void help(void)
 {
-    std::cout << "License: GNU GPL 3.\n";
-    std::cout << "If no --lang and --name arg, run interactively.\n"            ;
-    std::cout << "-h --help                 get help and do nothing\n"          ;
-    std::cout << "-w --no-welcome-script    don't make `Hello, World!` script\n";
-    std::cout << "-l <LANG> --lang <LANG>   specify lang tempelate\n"           ;
-    std::cout << "-n <NAME> --name <NAME>   specify project name"   << std::endl;
+    const char * help = R"(License: GNU GPL 3.
+    If no --lang and --name arg, run interactively.
+    -h --help                 get this help and do nothing
+    -w --no-welcome-script    don't make `Hello, World!` script
+    -l <LANG> --lang <LANG>   specify lang template. template: cpp (C++), c, python (no case sensitivity)
+    -n <NAME> --name <NAME>   specify project name
+    )";
+
+    std::cout << help;
 }
 
 int main(int argc, char *argv[])
@@ -67,31 +71,28 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (temp.empty() or name.empty()) // Interactive run
-    {
-        std::cout << "Project tempelate name: ";
-        std::getline(std::cin, temp); temp = lowercase(temp);
-        if (welcome_script)
+        if (name.empty())
         {
-            std::string temp_var;
-            std::cout << "Make welcome script (Hello, World!)? [Y/n] " << std::endl; std::getline(std::cin, temp_var);
-            temp_var = lowercase(temp_var);
-
-            if (temp_var == "n" or temp_var == "no") {welcome_script = false;}
+            std::cout << "Project name: ";
+            std::getline(std::cin, name); name = lowercase(name);
         }
-    }
 
+        if (temp.empty())
+        {
+            std::cout << "Project template name: ";
+            std::getline(std::cin, temp); temp = lowercase(temp);
+        }
+        
 
+    if (!prepare(name)) {return 2;}
     if (temp == "python") {
         return python(name, welcome_script);
     } else if (temp == "cpp") {
-
+        return cpp(name, welcome_script);
     } else if (temp == "c") {
-
-    } else if (temp == "site") {
-        
+        return c(name, welcome_script);
     } else {
-        std::cout << "Unknown tempelate: " << temp << " ." << std::endl;
+        std::cerr << "Unknown template: " << temp << " ." << std::endl;
         return 2;
     }
 
