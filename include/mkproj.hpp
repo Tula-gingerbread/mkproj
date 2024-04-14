@@ -4,10 +4,9 @@
 
 #include <string>
 
-int python(std::string name, bool welcome_script);
-int cpp(std::string name, bool welcome_script);
-int c(std::string name, bool welcome_script);
-// int site(std::string name, bool welcome_script);
+int python(const std::string name, const bool welcome_script);
+int cpp(const std::string name, const bool welcome_script);
+int c(const std::string name, const bool welcome_script);
 
 
 #endif

@@ -12,10 +12,10 @@
 
 inline bool prepare(const std::string name)
 {
-    // Make dir and cd to it
-
+    // Make dir and cd to it    
     if ( mkdir(name.c_str(), 0750) != 0 ) {
-        std::cerr << "Error in creating dir! Maybe, dir exists or you haven't enough perms." << std::endl; return false;
+        std::cerr << "Error in creating dir! Maybe, dir exists or you haven't enough perms." << std::endl;
+        return false;
     }
     std::filesystem::current_path(name);
 
