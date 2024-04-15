@@ -12,7 +12,7 @@ optdepends=("gcc: C and C++ compiler"
 replaces=("pymkproj")
 
 build() {
-    g++ "${srcdir}/main.cpp" "${srcdir}/include/*" -o "${srcdir}/mkproj.run" -march=native -static
+    g++ "main.cpp" "include/*" -o "mkproj.run" -march=native -static
 }
 
 package() {
