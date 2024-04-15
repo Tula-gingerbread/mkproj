@@ -1,7 +1,7 @@
 // Licensed under GPL 3.0 -- full license text in file LICENSE
 #include "mkproj.hpp"
 #include "gitignores.hpp"
-#include "ansi_escape.hpp"
+#include "string_utils.hpp"
 #include "hello_world.hpp"
 #include <iostream>
 #include <string>

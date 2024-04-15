@@ -1,5 +1,5 @@
-#ifndef ANSI_ESCAPE_HPP
-#define ANSI_ESCAPE_HPP
+#ifndef STRING_UTILS_HPP
+#define STRING_UTILS_HPP
 
 #include <string>
 
@@ -13,6 +13,9 @@ const std::string reset = "\033[0m";
 const std::string info = light_blue + ":: " + reset;
 const std::string error = bold + red + "Error: " + reset;
 const std::string warning = bold + yellow + "Warning: " + reset;
+
+std::string lowercase(std::string str);
+std::string trim(std::string str);
 
 
 #endif
