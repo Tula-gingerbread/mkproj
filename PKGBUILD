@@ -9,7 +9,7 @@ makedepends=("gcc")
 optdepends=("gcc: C and C++ compiler"
             "clang: C and C++ compiler"
             "python")
-replaces="pymkproj"
+replaces=("pymkproj")
 
 build() {
     g++ "${srcdir}/main.cpp" "${srcdir}/include/*" -o "${srcdir}/mkproj.run" -march=native -static
