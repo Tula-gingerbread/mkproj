@@ -35,7 +35,8 @@ b2sums=(
 replaces=("pymkproj")
 
 build() {
-    g++ main.cpp include/* -o "src/mkproj.run" -march=native -static
+    cd ..
+    g++ main.cpp include/* -o "${srcdir}/mkproj.run" -march=native -static
 }
 
 package() {
