@@ -8,6 +8,7 @@
 #include <string>
 #include <dirent.h>
 #include <sys/stat.h>
+#include "string_utils.hpp"
 
 
 inline bool prepare(const std::string name)
@@ -19,7 +20,7 @@ inline bool prepare(const std::string name)
     }
     std::filesystem::current_path(name);
 
-    std::cout << ":: Writing README..." << std::endl;
+    std::cout << info << "Writing README..." << std::endl;
     std::ofstream readme("README");
     if (readme) {
         readme << "# " << name << "\n";

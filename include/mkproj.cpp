@@ -17,9 +17,11 @@ int python(const std::string name, const bool welcome_script)
     std::cout << "Python version (major.minor without patch or type nothing for global python): ";
     std::getline(std::cin, version);
 
-    std::cout << info << "Making venv (.env).\n "<< \
-    info << "Hint -- to activate venv run \n\
-    -> `source .env/bin/activate` for bash; or `source .env/bin/activate.[fish or csh] for fish or csh`" << std::endl;
+    std::cout << info << "Making venv (.env).\n";
+    std::cout << info << "Hint -- to activate venv run \n";
+    std::cout << \
+    "    -> `source .env/bin/activate` for bash; or `source .env/bin/activate.[fish or csh] for fish or csh`" << std::endl;
+    
     const int retcode = system(("/usr/bin/env python" + version + " -m venv .env").c_str()); // python env
     if (retcode != 0) {
         std::cerr << error << "Failed create python venv!" << std::endl;

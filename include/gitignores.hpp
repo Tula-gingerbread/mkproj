@@ -4,6 +4,7 @@
 
 #include <string>
 
+// Gitignores for diff langs
 const std::string cpp_gitignore_template = R"(# Objects
 *.o
 *.obj

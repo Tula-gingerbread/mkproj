@@ -3,6 +3,8 @@
 #include <string>
 #include "string_utils.hpp"
 
+
+// Transform str to lowercase
 std::string lowercase(std::string str)
 {    
     std::transform(str.begin(), str.end(), str.begin(),
@@ -11,6 +13,8 @@ std::string lowercase(std::string str)
     return str;
 }
 
+
+// Remove whitespace
 std::string trim(std::string str)
 {
     str.erase(str.begin(), std::find_if(str.begin(), str.end(), [](unsigned char ch) {

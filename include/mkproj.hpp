@@ -4,6 +4,7 @@
 
 #include <string>
 
+// Funcs to make project
 int python(const std::string name, const bool welcome_script);
 int cpp(const std::string name, const bool welcome_script);
 int c(const std::string name, const bool welcome_script);
