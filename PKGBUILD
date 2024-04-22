@@ -1,6 +1,6 @@
 pkgname="mkproj"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Make project from template"
 arch=("x86_64")
 url="https://github.com/Tula-gingerbread/mkproj"
@@ -21,10 +21,10 @@ build() {
     b2sum --check --strict sums.b2
     if [ "$?" != "0" ]; then
         echo "BUILD: Failed to verify the integrity of the files!"
-        exit
+        exit 2
     fi
 
-    g++ main.cpp include/*.hpp -o "${srcdir}/mkproj.run" -march=native -static
+    g++ main.cpp include/* -o "${srcdir}/mkproj.run" -march=native -static
 }
 
 package() {
